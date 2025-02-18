@@ -163,7 +163,23 @@ html, body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.start-over-button {
+  position: center;
+  bottom: 95px;
+  background: yellow;
+  border-radius: 50px;
+  font-size: 25px;
+  width: 250px;
+  height: 80px;
+  font-family: 'Dela Gothic One', sans-serif;
+  box-shadow: 0 12px 17px rgba(3, 3, 3, 0.2);
+}
+
 .play-button:hover {
+  transform: scale(1.1);
+}
+
+.start-over-button:hover {
   transform: scale(1.1);
 }
 

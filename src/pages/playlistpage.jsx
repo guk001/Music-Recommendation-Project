@@ -33,6 +33,9 @@ const PlaylistPage = () => {
     setCurrentTrack(spotifyUri);
   };
   
+  const handleStartOver = () => {
+    setCurrentTrack(null);
+  };
 
   return (
     <div className="playlist-container">
@@ -79,6 +82,9 @@ const PlaylistPage = () => {
           </div>
         ))}
       </div>
+      <button className="start-over-button" onClick={handleStartOver}>
+      Start Over
+      </button>
     </div>
   );
 };

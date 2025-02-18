@@ -1,0 +1,187 @@
+/* General Layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevent unwanted scrolling */
+}
+
+.playlist-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #55CEFF;
+}
+
+/* Scrollable Playlist */
+.playlist-scroll {
+  width: 85%;
+  overflow-x: auto;
+  display: flex;
+  gap: 30px;
+  padding: 50px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.playlist-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Album Card Container */
+.album-card-container {
+  position: relative;
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  background: none; /* Removes any default background */
+}
+
+.album-card-container:hover {
+  transform: scale(1.05);
+}
+
+/* Album Card Container */
+.album-card-container {
+  position: relative;
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  background: none !important; /* Force removal of sky-blue background */
+}
+
+.album-card-container:hover {
+  transform: scale(1.05);
+}
+
+.album-card {
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Blurred Block - Remove Sky-Blue & Make It Darker */
+.album-blurred {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.85) !important; /* Darker background */
+  backdrop-filter: blur(20px);
+  border-radius: 0 0 16px 16px;
+  margin: -10px 0 0 0; /* Moves the blurred section up slightly */
+  position: relative;
+  background-image: inherit; /* Uses the same album cover */
+}
+
+/* Extra Dark Overlay */
+.album-blurred::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Additional darker shade */
+  border-radius: 0 0 16px 16px;
+}
+
+/* Overlay for Song Info & Play Button */
+.album-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 20px;
+  color: white;
+  text-align: left;
+  z-index: 2;
+}
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+/* Apply Font to Playlist Title */
+.playlist-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 45px; /* Adjust size as needed */
+  font-weight: bold;
+  color: black; /* Ensure contrast */
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.6);
+}
+
+/* Song Title */
+.album-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Play Button */
+.play-button {
+  position: absolute;
+  bottom: 95px;
+  right: 50px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+.play-button img {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* Spotify Player */
+.spotify-embed {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.spotify-player {
+  width: 100%;
+  height: 98%;
+  border-radius: 12px;
+}

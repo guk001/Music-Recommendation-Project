@@ -34,20 +34,6 @@ html, body {
   display: none;
 }
 
-/* Album Card Container */
-.album-card-container {
-  position: relative;
-  width: 270px;
-  min-width: 270px;
-  max-width: 270px;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  background: none; /* Removes any default background */
-}
-
 .album-card-container:hover {
   transform: scale(1.05);
 }
@@ -58,6 +44,7 @@ html, body {
   width: 270px;
   min-width: 270px;
   max-width: 270px;
+  margin-top: -20px;
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
@@ -173,6 +160,30 @@ html, body {
   height: 80px;
   font-family: 'Dela Gothic One', sans-serif;
   box-shadow: 0 12px 17px rgba(3, 3, 3, 0.2);
+  padding: 12px 24px;
+  margin-top: 20px;
+  margin-right: 300px;
+  transition: transform 0.2s easie-in-out, box-shadow 0.2s ease-in-out;
+  position: absolute;
+  bottom: 10px;
+}
+
+.add-library-button {
+  position: center;
+  bottom: 95px;
+  background: yellow;
+  border-radius: 50px;
+  font-size: 22px;
+  width: 250px;
+  height: 80px;
+  font-family: 'Dela Gothic One', sans-serif;
+  box-shadow: 0 12px 17px rgba(3, 3, 3, 0.2);
+  padding: 12px 24px;
+  margin-top: 20px;
+  margin-left: 300px;
+  transition: transform 0.2s easie-in-out, box-shadow 0.2s ease-in-out;
+  position: absolute;
+  bottom: 10px;
 }
 
 .play-button:hover {
@@ -180,6 +191,10 @@ html, body {
 }
 
 .start-over-button:hover {
+  transform: scale(1.1);
+}
+
+.add-library-button:hover {
   transform: scale(1.1);
 }
 
@@ -193,7 +208,8 @@ html, body {
 .spotify-embed {
   width: 100%;
   max-width: 900px;
-  margin: 20px auto;
+  margin-top: 40px;
+  margin-bottom: -20px;
 }
 
 .spotify-player {

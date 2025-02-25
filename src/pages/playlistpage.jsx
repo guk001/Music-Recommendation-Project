@@ -85,6 +85,9 @@ const PlaylistPage = () => {
       <button className="start-over-button" onClick={handleStartOver}>
       Start Over
       </button>
+      <button className="add-library-button" onClick={handleStartOver}>
+      Add To Library
+      </button>
     </div>
   );
 };

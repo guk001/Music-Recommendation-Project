@@ -11,7 +11,7 @@ function HomePage() {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
             <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet"></link>
             <div className="logoContainer">
-                <img src = "—Pngtree—creative company_1420804.png" alt="Logo" width="476" height="418" className = "logo"></img>
+                <img src = "Q&L-2 1.png" alt="Logo" width="476" height="378" className = "logo"></img>
             </div>
             <div className="textContainer">
                 <Link className="text" to = "/questionpage">Click To Start</Link>

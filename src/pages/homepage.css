@@ -1,0 +1,37 @@
+* {
+    background-color: #63DBFF;
+    margin: 0;
+    padding: 0;
+}
+
+.logoContainer {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.logo {
+
+}
+
+.textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background: #63DBFF;
+    height: 20%;
+}
+
+.text {
+    text-decoration: none;
+    font-family: "Dela Gothic One", serif;
+    font-weight: 60px;
+    text-align: center;
+    font-size: 50px;
+    color: yellow;
+    -webkit-text-stroke: 1.3px black;
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+}

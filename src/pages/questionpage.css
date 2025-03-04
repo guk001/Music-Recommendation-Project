@@ -10,8 +10,8 @@
     display: flex;
     justify-content: left;
     align-items: top;
-    margin-top: 20px;
-    margin-left: 130px;
+    margin-top: 30px;
+    margin-left: 170px;
     background: #63DBFF;
     height: 200px;
     width: 1000px;
@@ -19,8 +19,8 @@
 }
 
 .question {
-    font-size: 50px;
-    margin-bottom: 10px;
+    font-size: 45px;
+    letter-spacing: 2.5px;
     color: black;
     text-shadow: 10px 10px 7px rgba(0,0,0,0.2);
 }
@@ -28,7 +28,7 @@
 .options-container {
     background-color: #FFF153;
     border-radius: 40px;
-    width: 85%;
+    width: 80%;
     height: 450px;
     display: flex;
     justify-content: center;
@@ -49,9 +49,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
+    width: 230px;
     height: 75%;
-    margin: 15px;
+    margin: 0 17px;
     color: black;    
     background-color: #F2F2F2;
     flex-direction: column;
@@ -84,7 +84,6 @@
     text-align: left;
     background-color: #F2F2F2;
     width: 70%;
-
 }
 
 .option:hover {

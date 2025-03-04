@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./playlistpage.css";
 import PlayIcon from "./album/play_button.png";
 
 const PlaylistPage = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/"); // Navigate back to Home Page
+  };
   const [currentTrack, setCurrentTrack] = useState(null);
-  const [trackImages, setTrackImages] = useState({});
+  const [trackData, setTrackData] = useState({}); // Store title, artist, and image dynamically
 
   const playlists = [
-    { title: "Luther", artist: "Kendrick Lamar and SZA", spotifyUri: "45J4avUb9Ni0bnETYaYFVJ" },
-    { title: "Die With A Smile", artist: "Lady Gaga and Bruno Mars", spotifyUri: "2plbrEY59IikOBgBGLjaoe" },
-    { title: "APT.", artist: "Bruno Mars and Rosé", spotifyUri: "5vNRhkKd0yEAg8suGBpjeY" },
-    { title: "BIRDS OF A FEATHER", artist: "Billie Eilish", spotifyUri: "6dOtVTDdiauQNBQEDOtlAB" },
-    { title: "After Hours", artist: "The Weeknd", spotifyUri: "2p8IUWQDrpjuFltbdgLOag" },
-    { title: "Angels", artist: "The XX", spotifyUri: "3zsRP8rH1kaIAo9fmiP4El" },
-    { title: "If You Wait", artist: "London Grammar", spotifyUri: "3NyX0UgDNvhP2zyeBaAbpu" },
-    { title: "Zebulon", artist: "Kungs", spotifyUri: "22TTatdk4eLlsQ2mXKRozH" },
+    { spotifyUri: "7AKwWqnoMmvCqBQtcdIECG" },
+    { spotifyUri: "2plbrEY59IikOBgBGLjaoe" },
+    { spotifyUri: "5vNRhkKd0yEAg8suGBpjeY" },
+    { spotifyUri: "6dOtVTDdiauQNBQEDOtlAB" },
+    { spotifyUri: "2p8IUWQDrpjuFltbdgLOag" },
+    { spotifyUri: "3zsRP8rH1kaIAo9fmiP4El" },
+    { spotifyUri: "3NyX0UgDNvhP2zyeBaAbpu" },
+    { spotifyUri: "22TTatdk4eLlsQ2mXKRozH" },
   ];
 
   useEffect(() => {
-    const fetchTrackImages = async () => {
-      const token = "BQCYlIOqIKeN7NrYfGjzNnFBJM5O-8B17SzNxyVoGvbxBh7KLFxrO-fBWuUeMYneFBBb6LnndflOMlFdVms0vr5iuruDLcvVD4db2FlhfCfEa9itnuGE0-DbQbVgnMCUrDadRIKe0Ik"; // Replace with your valid Spotify API token
-      let images = {};
-      
+    const fetchTrackDetails = async () => {
+      const token = "BQA3-Xtg-8YQrzpnjVBFGCNHvX3Gmli-nCNkJ2wsDf-lalTpFCCCE2tiP7fZSGAP9lbEQH-pa5Ip6gjmhJyxnVl_d85iWyjs6g8wxZTk5BX7c0PoH1H4I2D_TcnxPe8zsYAyrotuLzI"; // Replace with valid Spotify API token
+      let dataMap = {};
+
       for (let playlist of playlists) {
         try {
           const response = await fetch(`https://api.spotify.com/v1/tracks/${playlist.spotifyUri}`, {
@@ -29,18 +34,23 @@ const PlaylistPage = () => {
               Authorization: `Bearer ${token}`,
             },
           });
+
           const data = await response.json();
-          if (data.album && data.album.images.length > 0) {
-            images[playlist.spotifyUri] = data.album.images[0].url;
+          if (data && data.name && data.artists.length > 0) {
+            dataMap[playlist.spotifyUri] = {
+              title: data.name,
+              artist: data.artists.map(artist => artist.name).join(", "), // Join multiple artists with commas
+              image: data.album.images.length > 0 ? data.album.images[0].url : "default_image_url.jpg",
+            };
           }
         } catch (error) {
-          console.error("Error fetching track image:", error);
+          console.error("Error fetching track details:", error);
         }
       }
-      setTrackImages(images);
+      setTrackData(dataMap);
     };
-    
-    fetchTrackImages();
+
+    fetchTrackDetails();
   }, []);
 
   const handlePlay = (spotifyUri) => {
@@ -50,7 +60,7 @@ const PlaylistPage = () => {
     }
     setCurrentTrack(spotifyUri);
   };
-  
+
   const handleStartOver = () => {
     setCurrentTrack(null);
   };
@@ -77,30 +87,34 @@ const PlaylistPage = () => {
 
       {/* Scrollable Playlist */}
       <div className="playlist-scroll">
-        {playlists.map((playlist, index) => (
-          <div className="album-card-container" key={index}>
-            {/* Non-blurred Album Cover */}
-            <div className="album-card">
-              <img src={trackImages[playlist.spotifyUri] || "default_image_url.jpg"} alt={playlist.title} className="album-cover" />
+        {playlists.map((playlist, index) => {
+          const trackInfo = trackData[playlist.spotifyUri] || {};
+          return (
+            <div className="album-card-container" key={index}>
+              {/* Non-blurred Album Cover */}
+              <div className="album-card">
+                <img src={trackInfo.image || "default_image_url.jpg"} alt={trackInfo.title || "Track"} className="album-cover" />
+              </div>
+
+              {/* Blurred Background Block */}
+              <div className="album-blurred" style={{ backgroundImage: `url(${trackInfo.image || "default_image_url.jpg"})` }}></div>
+
+              {/* Overlay for Text & Button (Not Blurred) */}
+              <div className="album-overlay">
+                <h3 className="album-title">{trackInfo.title || "Loading..."}</h3>
+                <p className="album-artist">{trackInfo.artist || "Loading..."}</p>
+
+                {/* Play Button */}
+                <button className="play-button" onClick={() => handlePlay(playlist.spotifyUri)}>
+                  <img src={PlayIcon} alt="Play" />
+                </button>
+              </div>
             </div>
-
-            {/* Blurred Background Block */}
-            <div className="album-blurred" style={{ backgroundImage: `url(${trackImages[playlist.spotifyUri] || "default_image_url.jpg"})` }}></div>
-
-            {/* Overlay for Text & Button (Not Blurred) */}
-            <div className="album-overlay">
-              <h3 className="album-title">{playlist.title}</h3>
-              <p className="album-artist">{playlist.artist}</p>
-
-              {/* Play Button */}
-              <button className="play-button" onClick={() => handlePlay(playlist.spotifyUri)}>
-                <img src={PlayIcon} alt="Play" />
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-      <button className="start-over-button" onClick={handleStartOver}>Start Over</button>
+
+      <button className="start-over-button" onClick={goBack}>Start Over</button>
       <button className="add-library-button">Add To Library</button>
     </div>
   );

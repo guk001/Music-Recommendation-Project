@@ -1,10 +1,9 @@
-/* General Layout */
 html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* Prevent unwanted scrolling */
+  overflow: hidden; 
 }
 
 .playlist-container {
@@ -18,7 +17,6 @@ html, body {
   background-color: #55CEFF;
 }
 
-/* Scrollable Playlist */
 .playlist-scroll {
   width: 85%;
   overflow-x: auto;
@@ -38,7 +36,6 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Album Card Container */
 .album-card-container {
   position: relative;
   width: 270px;
@@ -85,7 +82,6 @@ html, body {
   background-image: inherit;
 }
 
-/* Dark Overlay */
 .album-blurred::after {
   content: "";
   position: absolute;
@@ -95,7 +91,6 @@ html, body {
   border-radius: 0 0 16px 16px;
 }
 
-/* Overlay for Song Info & Play Button */
 .album-overlay {
   position: absolute;
   bottom: 0;
@@ -111,10 +106,9 @@ html, body {
   z-index: 2;
 }
 
-/* Import Google Font */
+
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 
-/* Centered Playlist Title */
 .playlist-title {
   font-family: 'Dela Gothic One', sans-serif;
   font-size: 45px;
@@ -128,7 +122,6 @@ html, body {
   width: 100%;
 }
 
-/* Song Title */
 .album-title {
   font-size: 18px;
   white-space: nowrap;
@@ -154,7 +147,6 @@ html, body {
   }
 }
 
-/* Play Button */
 .play-button {
   position: absolute;
   bottom: 95px;
@@ -172,7 +164,6 @@ html, body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Buttons */
 .start-over-button {
   background: yellow;
   border-radius: 50px;
@@ -191,7 +182,7 @@ html, body {
 .add-library-button {
   background: yellow;
   border-radius: 50px;
-  font-size: 16px; /* Default size for larger screens */
+  font-size: 16px; 
   width: 250px;
   height: 80px;
   font-family: 'Dela Gothic One', sans-serif;
@@ -204,7 +195,6 @@ html, body {
   bottom: 10px;
 }
 
-/* Positioning Buttons */
 .start-over-button {
   left: 10%;
 }
@@ -213,10 +203,9 @@ html, body {
   right: 10%;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .playlist-title {
-    font-size: 35px; /* Adjust title size for smaller screens */
+    font-size: 35px;
   }
 
 .start-over-button, .add-library-button {
@@ -271,7 +260,6 @@ html, body {
   height: 24px;
 }
 
-/* Spotify Player */
 .spotify-embed {
   width: 100%;
   max-width: 900px;

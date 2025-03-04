@@ -6,11 +6,10 @@ import PlayIcon from "./album/play_button.png";
 const PlaylistPage = () => {
   const navigate = useNavigate();
   const goBack = () => {
-    navigate("/"); // Navigate back to Home Page
+    navigate("/"); 
   };
   const [currentTrack, setCurrentTrack] = useState(null);
-  const [trackData, setTrackData] = useState({}); // Store title, artist, and image dynamically
-
+  const [trackData, setTrackData] = useState({}); 
   const playlists = [
     { spotifyUri: "7AKwWqnoMmvCqBQtcdIECG" },
     { spotifyUri: "2plbrEY59IikOBgBGLjaoe" },
@@ -24,7 +23,7 @@ const PlaylistPage = () => {
 
   useEffect(() => {
     const fetchTrackDetails = async () => {
-      const token = "BQA3-Xtg-8YQrzpnjVBFGCNHvX3Gmli-nCNkJ2wsDf-lalTpFCCCE2tiP7fZSGAP9lbEQH-pa5Ip6gjmhJyxnVl_d85iWyjs6g8wxZTk5BX7c0PoH1H4I2D_TcnxPe8zsYAyrotuLzI"; // Replace with valid Spotify API token
+      const token = "BQBbC3S4FiHwfge_CGEjhHpteW3BpcusPdRc20RU3wIbORRlCZk5qdUIxp_mF7Jp7vfmTMif9dfSvQoJ6MCn_P4dos7VcgwzuFofxw5NGoNukJ5bDZ18TUNvy_ROZtb_khCiUjI7jKk"; // Replace with valid Spotify API token
       let dataMap = {};
 
       for (let playlist of playlists) {
@@ -39,7 +38,7 @@ const PlaylistPage = () => {
           if (data && data.name && data.artists.length > 0) {
             dataMap[playlist.spotifyUri] = {
               title: data.name,
-              artist: data.artists.map(artist => artist.name).join(", "), // Join multiple artists with commas
+              artist: data.artists.map(artist => artist.name).join(", "), 
               image: data.album.images.length > 0 ? data.album.images[0].url : "default_image_url.jpg",
             };
           }
@@ -85,26 +84,21 @@ const PlaylistPage = () => {
         )}
       </div>
 
-      {/* Scrollable Playlist */}
       <div className="playlist-scroll">
         {playlists.map((playlist, index) => {
           const trackInfo = trackData[playlist.spotifyUri] || {};
           return (
             <div className="album-card-container" key={index}>
-              {/* Non-blurred Album Cover */}
               <div className="album-card">
                 <img src={trackInfo.image || "default_image_url.jpg"} alt={trackInfo.title || "Track"} className="album-cover" />
               </div>
 
-              {/* Blurred Background Block */}
               <div className="album-blurred" style={{ backgroundImage: `url(${trackInfo.image || "default_image_url.jpg"})` }}></div>
 
-              {/* Overlay for Text & Button (Not Blurred) */}
               <div className="album-overlay">
                 <h3 className="album-title">{trackInfo.title || "Loading..."}</h3>
                 <p className="album-artist">{trackInfo.artist || "Loading..."}</p>
 
-                {/* Play Button */}
                 <button className="play-button" onClick={() => handlePlay(playlist.spotifyUri)}>
                   <img src={PlayIcon} alt="Play" />
                 </button>

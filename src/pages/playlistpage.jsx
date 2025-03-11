@@ -23,7 +23,7 @@ const PlaylistPage = () => {
 
   useEffect(() => {
     const fetchTrackDetails = async () => {
-      const token = "BQBbC3S4FiHwfge_CGEjhHpteW3BpcusPdRc20RU3wIbORRlCZk5qdUIxp_mF7Jp7vfmTMif9dfSvQoJ6MCn_P4dos7VcgwzuFofxw5NGoNukJ5bDZ18TUNvy_ROZtb_khCiUjI7jKk"; // Replace with valid Spotify API token
+      const token = "BQDooMdIhAleBN993jDKzDODRWIj4dB_Fn45ql9aHi5h_qK0PinSNnTioDjQaIT_Ac-S3NAudlY0FGSouEx_Id0SlzeRkFWLN69ImJBVCehm2spYYdc0zCT7DA7fpCpEuAdjPcNG__k"; // Replace with valid Spotify API token
       let dataMap = {};
 
       for (let playlist of playlists) {

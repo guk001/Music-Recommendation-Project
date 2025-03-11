@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import './questionpage.css';
 
 const QuestionPage = () => {
   const navigate = useNavigate();
@@ -9,13 +10,39 @@ const QuestionPage = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to the Music App</h1>
-      <div>
-        <h1>Question Page</h1>
-        <p>여기에 퀴즈 질문 UI를 넣으세요.</p>
+    <div className="question-container">
+      {/* Import Google Font */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+      <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" />
+
+      {/* Title */}
+      <p className="question">How Would You Describe Your Feeling in Color?</p>
+
+      {/* Options */}
+      <div className="middle">
+        <div className="options-container">
+          <div className="option">
+            <div className="number">1</div>
+            <div className="content">Quis autem vel eum iure reprehenderit.Quis autem vel eum iure reprehenderit.</div>
+          </div>
+          <div className="option">
+            <div className="number">2</div>
+            <div className="content">Quis autem vel eum iure reprehenderit.Quis autem vel eum iure reprehenderit.</div>
+          </div>
+          <div className="option">
+            <div className="number">3</div>
+            <div className="content">Quis autem vel eum iure reprehenderit.Quis autem vel eum iure reprehenderit.</div>
+          </div>
+          <div className="option">
+            <div className="number">4</div>
+            <div className="content">Quis autem vel eum iure reprehenderit.Quis autem vel eum iure reprehenderit.</div>
+          </div>
+        </div>
       </div>
-      <button onClick={goToPlaylist} style={{ padding: "10px 20px", fontSize: "16px" }}>
+
+      {/* Navigation Button */}
+      <button className="navigate-button" onClick={goToPlaylist}>
         Go to Playlist
       </button>
     </div>
